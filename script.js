@@ -1,0 +1,1 @@
+var ticketmaster_key = config.KEY
