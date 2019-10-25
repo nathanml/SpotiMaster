@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$("#submit").click(function(){
 		var city = document.getElementById('city').value;
 
-		const link = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=" + city + "&apikey=";
+		const link = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=" + city + "&apikey=" ticketmaster_key;
 		alert(link);
 		
 		$.ajax({
@@ -11,6 +11,7 @@ $(document).ready(function(){
   			url: link,
   			async:true,
   			dataType: "json",
+        alert('here');
   			success: function(json) {
             	console.log(json);
             	alert("in success");
