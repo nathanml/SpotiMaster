@@ -1,24 +1,22 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from requests.compat import quote_plus
 
 # Create your views here.
 def home(request):
-    return render(request, 'my_app/home.html')
+    return render(request, 'accounts/home.html')
 
-def login(request):
-    return render(request, 'my_app/login.html')
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile/')
+    else:
+        form = UserCreationForm()
+        args = {'form': form}
+        return render(request, 'accounts/reg_form.html', args) 
 
-def profile(request):
-    return render(request, 'my_app/profile.html')
-
-def search_by_genre(request):
-    return render(request, 'my_app/search_by_genre.html')
-
-def search_by_artist(request):
-    return render(request, 'my_app/search_by_artist.html')
-
-def search_by_city(request):
-    return render(request, 'my_app/search_by_city.html')
 
