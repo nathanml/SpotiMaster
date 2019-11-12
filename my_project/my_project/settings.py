@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'django.contrib.sites',
 
     'allauth',
@@ -45,6 +47,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
 
+=======
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.spotify',
+>>>>>>> 9b5aa64184248c6f3c1c6181449c358c222aa885
     'my_app',
 ]
 
