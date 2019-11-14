@@ -6,7 +6,7 @@ from requests.compat import quote_plus
 
 # Create your views here.
 def home(request):
-    return render(request, 'accounts/home.html')
+    return render(request, 'account/home.html')
 
 def register(request):
     if request.method == 'POST':

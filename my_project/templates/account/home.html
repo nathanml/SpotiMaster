@@ -1,6 +1,10 @@
-{% extends "base.html" %}
+{% extends "account/base.html" %}
+
+{% block head_links %} 
+  <title>Home</title>
+{% endblock %}
+
 {% block content %}
-{% load socialaccount %}
 
 <main role="main">
 
@@ -25,24 +29,36 @@
     {% endif %}
   
     <div class="container">
-
+    {% if user.is_authenticated %}
       <div class="row">
-        <div class="col-md-3">
-          <h2>Heading</h2>
+        <div class="col">
+          <h2>Set up Your Preference</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="{% url 'login' %}" role="button">Login &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="#" role="button">Details &raquo;</a></p>
         </div>
-        <div class="col-md-3">
-          <h2>Heading</h2>
+        <div class="col">
+          <h2>View Your Concert History</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="{% url 'register' %}" role="button">Register &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="#" role="button">Details &raquo;</a></p>
         </div>
       </div>
-  
+    {% else %}
+        <div class="row">
+            <div class="col">
+            <h2>Please Login Your Account</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="/accounts/login/" role="button">Login &raquo;</a></p>
+            </div>
+            <div class="col">
+            <h2>Don't Have an Account?</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="/accounts/signup/" role="button">Sign Up &raquo;</a></p>
+            </div>
+        </div>
       <hr>
   
     </div> <!-- /container -->
-    
+    {% endif %}
   </main>
 
 {% endblock content %}
