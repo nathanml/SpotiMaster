@@ -4,8 +4,8 @@
 
 
     <link rel="stylesheet" href="{% static 'account/Css/Custom-Account-Styles.css' %}" type = "text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'account/Css/fonts.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'account/Css/font-awesome.min.css' %}">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +29,7 @@
 <body>
 
     <!-- Navigation Bar-->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'home' %}">App Name</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,12 +50,17 @@
           </li>
 
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <a class="dropdown-item" href="/accounts/profile">View</a>
+                  <a class="dropdown-item" href="/accounts/profile/edit">Edit</a>
+              </div>
           </li>
           <li class="nav-item my-2 my-lg-0">
             <a class="nav-link disabled" href="/accounts/logout">Logout</a>
           </li>
+        </ul>
           
           {% else %}
           <li class="nav-item dropdown my-2 my-lg-0">
@@ -66,8 +71,13 @@
             </div>
           </li>
         </ul>
+        {% endif %}
+        <form class="form-inline my-2 my-lg-0" method='GET' action='/search/result/'>
+          <input name='keyword' class="form-control mr-sm-2" type="text" placeholder="" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
-      {% endif %}
+      
     </nav>
 
 

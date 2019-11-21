@@ -1,0 +1,33 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<div class='container'>
+    <h3>Search for City</h3>
+    <form method='get'>
+        {{ form.as_p }}
+        <button type="submit">search</button>
+    </form>
+
+    {% if search_result %}
+    <hr>
+        {% if search_result.success %}
+        <ul class="list-unstyled"></ul>
+            {% for event in search_result %}
+            <li class="media">
+                <img src='{{ event.images.0.url }}' class="mr-3" width="160" height="90">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1"><a href="{{ event.id }}/">{{ event.name }}</a></h5>
+                    The event starts at {{ event.dates.start.localTime }} on {{ event.dates.start.localDate }}.<br>
+                </div>
+            </li>
+            <hr>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p><em>{{ search_result.message }}</em></p>
+        {% endif %}
+        
+    {% endif %}
+
+</div>
+{% endblock %}

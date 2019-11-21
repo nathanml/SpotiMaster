@@ -1,0 +1,23 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+{% if search_result %}
+<div class="container h-100">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10"><h4>{{ search_result.name }}</h4></div>
+        <div class="col-4"><img src="{{ search_result.images.url }}" class="d-block w-100" width="400" height="225"></div>
+        <div class="col-6"><p><b>Genre: </b>{{ search_result.genre }}<br>
+            <b>Time: </b>{{ search_result.dates.localTime }}, {{ search_result.dates.localDate }}<br>
+            <b>Venue: </b>{{ search_result.venue.name }}<br>
+            <b>City: </b>{{ search_result.venue.city.name}}<br>
+            <i><a href="{{ search_result.url }}">More information / Purchase Ticket </a></i></p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if search_message %}
+    <h2>{{ search_message }}</h2>
+{% endif %}
+
+{% endblock %}

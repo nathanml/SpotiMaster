@@ -5,6 +5,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('signup/', views.register, name='register'),
+    path('accounts/profile/', views.profile, name='profile'),
+    path('accounts/profile/edit', views.edit_profile, name='edit_profile'),
+    path('accounts/preference/edit', views.edit_preference, name='edit_preference'),
+    path('accounts/spotify/connect', views.connect_spotify, name='connect_spotify'),
+    path('accounts/password/', views.reset_password, name='reset_password')
 ]
