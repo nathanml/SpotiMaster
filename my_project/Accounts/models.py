@@ -15,12 +15,12 @@ class UserProfile(models.Model):
         ('KnvZfZ7vAeA', 'Rock'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    city = models.CharField(max_length=100, default='')
-    spotify_username = models.CharField(max_length=100, default='')
+    city = models.CharField(max_length=100, default='', blank=True)
+    spotify_username = models.CharField(max_length=100, default='', blank=True)
     genre = models.CharField(
         max_length=25, 
         choices = Genre_Choices,
-        default='')
+        default='', blank=True)
     
 def create_profile(sender, **kwargs):
     if kwargs['created']:

@@ -11,6 +11,9 @@ from accounts.models import UserProfile
 def home(request):
     return render(request, 'account/home.html')
 
+def spotify(request):
+    return render(request, 'account/spotify.html')
+
 @login_required 
 def profile(request):
     profile = UserProfile.objects.get(user=request.user)
@@ -62,7 +65,10 @@ def edit_preference(request):
         preference_form = EditPreferenceForm(request.POST, instance=request.user)
 
         if preference_form.is_valid():
-            preference_form.save()
+            preference = UserProfile.objects.get(user=request.user)
+            preference.city = preference_form.cleaned_data['city']
+            preference.genre = preference_form.cleaned_data['genre']
+            preference.save()
             return redirect('/accounts/profile/')
             
     else:
@@ -77,7 +83,9 @@ def connect_spotify(request):
         spotify_form = EditSpotifyForm(request.POST, instance=request.user)
 
         if spotify_form.is_valid():
-            spotify_form.save()
+            preference = UserProfile.objects.get(user=request.user)
+            preference.spotify_username = spotify_form.cleaned_data['spotify_username']
+            preference.save()
             return redirect('/accounts/profile/')
             
     else:

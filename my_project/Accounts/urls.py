@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('spotifylogin/', views.spotify, name='spotify'),
     path('accounts/profile/', views.profile, name='profile'),
     path('accounts/profile/edit', views.edit_profile, name='edit_profile'),
     path('accounts/preference/edit', views.edit_preference, name='edit_preference'),

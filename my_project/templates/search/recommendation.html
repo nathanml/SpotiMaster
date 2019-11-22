@@ -4,8 +4,9 @@
 <div class='container'>
   {% if search_result %}
   <hr>
+  {% for key in search_result %}
     <ul class="list-unstyled"></ul>
-    {% for event in search_result %}
+    {% for event in search_result[key] %}
         <li class="media">
             <img src='{{ event.images.0.url }}' class="mr-3" width="160" height="90">
             <div class="media-body">
@@ -16,6 +17,8 @@
         <hr>
     {% endfor %}
     </ul>
+  {% endfor }
+
   {% endif %}
 
   {% if search_message %}
