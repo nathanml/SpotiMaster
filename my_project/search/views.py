@@ -34,7 +34,7 @@ def recommendation(request):
             redirect_uri = 'http://127.0.0.1:8000/spotifylogin'
 
             token = util.prompt_for_user_token(username, scope, client_id, client_secret, redirect_uri)
-            
+
             if token:
                 sp = spotipy.Spotify(auth=token)
                 sp.trace = False
@@ -55,8 +55,8 @@ def recommendation(request):
                         events = response_result["_embedded"]['events']
                         for event in events:
                             search_result.append(event)
-            #return render(request, 'search/result.html', {'search_result': search_result})
-        
+    
+        # check whether the user sets up preference 
         if city != '' or genre != '':
             url = ''
             if city == '':
@@ -76,10 +76,11 @@ def recommendation(request):
                     events = response_result["_embedded"]['events']
                     for event in events:
                         search_result.append(event)
-                else:
-                    search_message = "Sorry, there is no recommendation for you based on your preference right now!"
-                    return render(request, 'search/result.html', {'search_message': search_message})
-
+        
+        if len(search_result) == 0:
+            search_message = "Sorry, there is no recommendation for you based on your preference right now!"
+            return render(request, 'search/result.html', {'search_message': search_message})
+        
         return render(request, 'search/result.html', {'search_result': search_result})
 
     
