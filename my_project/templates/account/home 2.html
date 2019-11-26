@@ -1,0 +1,72 @@
+{% extends "account/base.html" %}
+
+{% block head_links %} 
+  <title>Home</title>
+{% endblock %}
+
+{% block content %}
+
+<main role="main">
+
+    <!-- Where users can click through to see a list of concerts -->
+    {% if user.is_authenticated %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Welcome {{ user.username }} !!!</h1>
+        <p>Welcome back! Music is a crucial component of our lives. We're glad that you enjoy musics.</p>
+        <p>There are a lot going on since you last login. We would like to show your some interesting concerts!</p>
+        <p><a class="btn btn-primary btn-lg" href="search/" role="button">See Everything &raquo;</a></p>
+      </div>
+    </div>
+
+    {% else %}
+    <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome!!!</h1>
+          <p>Welcome to our website! Music is a crucial component of our lives. We're glad that you enjoyr musics.</p>
+          <p>We recommend you to login or signup for better experience. However, you can still see what's happening here</p>
+          <p>You can see what's going on in the music week here. </p>
+          <p><a class="btn btn-primary btn-lg" href="search/" role="button">Details &raquo;</a></p>
+        </div>
+    </div>
+    {% endif %}
+  
+    <div class="container">
+    {% if user.is_authenticated %}
+      <div class="row">
+        <div class="col">
+          <h2>Set up Your Preference</h2>
+          <p>We would like to know some of your music preference. This will help us get familiar with you. More importantly, this helps us recommend you music events that you may be interested in!</p>
+          <p><a class="btn btn-secondary" href="/accounts/preference/edit" role="button">Set up &raquo;</a></p>
+        </div>
+        <div class="col">
+          <h2>Have a Spotify Account?</h2>
+          <p>Do you have a Spotify account? If so, that's great! You can connect to your Spotify account in our app, simply, by telling us your username. This will help us do better in recommending music events for you!</p>
+          <p><a class="btn btn-secondary" href="accounts/spotify/connect" role="button">Connect &raquo;</a></p>
+        </div>
+        <div class="col">
+          <h2>See Recommendations</h2>
+          <p>Have you set up your preference or connect to your Spotify account? If not, please do that first! You can see a list of music events that we recommend for you here.</p>
+          <p><a class="btn btn-secondary" href="/search/recommendation/" role="button">Details &raquo;</a></p>
+        </div>
+      </div>
+    {% else %}
+        <div class="row">
+            <div class="col">
+            <h2>Please Login Your Account</h2>
+            <p>If you have already signed up with our app, please login to your account to see recommendations, view / edit your profile and preference. Enjoy your music journey today!</p>
+            <p><a class="btn btn-secondary" href="/accounts/login/" role="button">Login &raquo;</a></p>
+            </div>
+            <div class="col">
+            <h2>Don't Have an Account?</h2>
+            <p>Don't worry. It's easy to sign up our app. Simply clicking the Signup button and filling in some information, you will be a member of our app. This will help us provide better service for you.</p>
+            <p><a class="btn btn-secondary" href="/accounts/signup/" role="button">Sign Up &raquo;</a></p>
+            </div>
+        </div>
+      <hr>
+  
+    </div> <!-- /container -->
+    {% endif %}
+  </main>
+
+{% endblock content %}

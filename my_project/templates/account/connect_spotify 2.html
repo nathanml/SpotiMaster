@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+
+{% block head_links %} 
+  <title>Spotify Connection</title>
+{% endblock %}
+
+{% block content %}
+<hr>
+<div class='container'>
+    <h2>Welcome {{ request.user.username }}</h2>
+    <h3>You can connect to your Spotify account here!</h3>
+    <br>
+    <p>By Connecting to your Spotify account via our app, you agree that we can get access to your Spotify listening history.</p>
+    <form method='post'>
+        {% csrf_token %}
+        {{ spotify_form.as_p }} 
+        <button type='submit'>Submit</button>
+    </form>
+    <br> 
+</div>
+
+{% endblock %}
