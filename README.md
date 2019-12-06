@@ -14,7 +14,7 @@ There are entirely five assignments due for the project:
 - Assignment 2: [User Stories](https://github.com/nathanml/CS411-Project/tree/master/Documentations/Assignment%202%20-%20User%20Stories) is under the folder Documentations
 - Assignment 3: [Prototype](https://github.com/nathanml/CS411-Project/tree/master/Documentations/Assignment%203%20-%20Prototype) is under the folder Documentations
 - Assignment 4: [Analysis and Architecture Decision](https://github.com/nathanml/CS411-Project/tree/master/Documentations/Assignment%204%20-%20Analysis%20and%20Architecture%20Decision) is under the folder Documentations
-- Assignment 5: [OAuth Demo](https://github.com/nathanml/CS411-Project/tree/OAuth) is under the branch OAuth
+- Assignment 5: [OAuth Demo](https://github.com/nathanml/CS411-Project/tree/OAuth) is under the branch OAuth. Third-party Authntication via Google and GitHub
 
 ## Built With
 
